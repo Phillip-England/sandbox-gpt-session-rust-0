@@ -1,0 +1,6 @@
+[package]
+name = "sandbox-gpt-session-rust-0"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
