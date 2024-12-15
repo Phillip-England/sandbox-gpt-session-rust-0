@@ -76,7 +76,9 @@ enum Message {
 
 // a trait that can be implemented on a type to "describe" it
 trait Describe {
-    fn describe(&self) -> String;
+    fn describe(&self) -> String {
+        String::from("this is an object with no specific description")
+    }
 }
 
 struct Animal {
@@ -86,6 +88,8 @@ struct Animal {
 struct Vehicle {
     model: String,
 }
+
+struct Unknown;
 
 impl Describe for Animal {
     fn describe(&self) -> String {
@@ -98,6 +102,8 @@ impl Describe for Vehicle {
         format!("This is a vehicle with the model: {}", self.model)
     }
 }
+
+impl Describe for Unknown {} // uses the default implementation
 
 //=======================================
 // FUNCTIONS
@@ -164,5 +170,7 @@ fn using_traits_to_describe() {
         model: String::from("Honda"),
     };
     println!("{}", car.describe());
+    let unknown = Unknown{};
+    println!("{}", unknown.describe());
 }
 
